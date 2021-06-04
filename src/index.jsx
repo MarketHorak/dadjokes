@@ -1,29 +1,47 @@
 import React from 'react';
 import { useState } from 'react';
+import Joke from './Joke/joke.jsx';
 import { render } from 'react-dom';
 /* import './index.html'; */
 import './style.css';
+import jokes from '../jokes';
 import users from './users/user01.png';
 
 const App = () => { 
 
- const [upLikes, setUpLikes] = useState (0);
+ 
+/*  const [upLikes, setUpLikes] = useState (0);
  const handleClick = () => {
    setUpLikes(upLikes+1);
  };
 
  const [downLikes, setDownLikes] = useState (0);
  const handleClick1 = () => {
-  setDownLikes(downLikes+1);
- };
+  setDownLikes(downLikes+1); 
+ };*/
 
  //tady to chvi jeste zjednodusit ... dopsat!!!!
- 
+
   return (
     <>
   <div className="container">
       <div className="joke">
-        <div className="joke__body">
+      {jokes.map((x) => (
+        <Joke
+       userAvatar={x. userAvatar}
+       userName={x.userName}
+       text={x.text}
+        likes= {x.likes}
+        dislikes={x.dislikes}>
+       </Joke>)
+    
+    )}
+          </div>
+          </div>
+          </>
+      );
+      };
+      /* {  <div className="joke__body">
           <div className="joke__user">
             <img className="user-avatar" src={users}/>
             <p className="user-name">Neroxx</p>
@@ -40,11 +58,7 @@ const App = () => {
           <span id="likes-up" className="likes-count likes-count--up">{upLikes}</span>
           <button id="btn-down" className="btn-like btn-like--down" onClick={handleClick1}></button>
           <span id="likes-down" className="likes-count likes-count--down">{downLikes}</span>
-        </div>
-      </div>
-    </div>
-    </>
-);
-};
+</div>   */  
+
 
 render(<App />, document.querySelector('#app'));
